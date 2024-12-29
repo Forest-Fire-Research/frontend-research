@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
-import Paper from '@mui/material/Paper';
 import { Box } from '@mui/material';
-import { Link } from 'react-router-dom';
 
 const listColumns: GridColDef[] = [
     {
