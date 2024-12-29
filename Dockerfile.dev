@@ -1,0 +1,12 @@
+FROM node:20.16.0-alpine3.20
+
+WORKDIR /wire-ai_app
+
+COPY package*.json .
+
+COPY ./public ./public
+COPY ./src  ./src
+COPY ./build.sh ./build.sh
+
+RUN ./build.sh
+
