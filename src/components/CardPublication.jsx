@@ -2,20 +2,14 @@ import React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-// import CardHeader from '@mui/material/CardHeader';
-// import CardMedia from '@mui/material/CardMedia';
+import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-import { Box, Button, Chip, Divider } from '@mui/material';
+import { Chip, Divider } from '@mui/material';
 import { motion } from "framer-motion";
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import { Link } from 'react-router-dom';
+import PreviewPublication from './PreviewPublication';
 
 const CardPublication = (props) => {
     const doiLink = 'https://doi.org/' + props.publication.doi
@@ -36,63 +30,11 @@ const CardPublication = (props) => {
 
     return (
         <React.Fragment>
-            <Dialog
-                open={openPublication}
-                onClose={openPublicationPopup}
-                scroll='paper'
-                aria-labelledby="alert-publication"
-                aria-describedby="alert-publication-description"
-            >
-                <DialogTitle id="alert-publication-title">
-                    {props.publication.title}
-                </DialogTitle>
-                <DialogContent>
-                    <DialogContentText id="alert-abstract-description">
-                        <Box pb={2}>
-                            Authors:
-                            {props.publication.authors.split('and').map((author,index) => (
-                                <Typography  
-                                    variant='body2'
-                                    pl={2}
-                                >
-                                {index+1}. {author.split(',').reverse()} 
-                                </Typography>
-                            ))}
-                        </Box>
-                        <Box pb={2}>
-                            Publications Details:
-                            <Typography variant='body2' pl={2}>    
-                                Published in: {props.publication.publisher} ({props.publication.publisherShort})
-                            </Typography>
-                            <Typography variant='body2' pl={2}>    
-                                Location: {props.publication.location} 
-                            </Typography>
-                            <Typography variant='body2' pl={2}>    
-                                DOI: <Link to={doiLink}>{props.publication.doi} </Link> 
-                            </Typography>
-                            <Typography variant='body2' pl={2}>    
-                                Pages: {props.publication.pages}
-                            </Typography>
-                            <Typography variant='body2' pl={2}>    
-                                Year: {props.publication.year}
-                            </Typography>
-                        </Box>
-                        <Box>
-                            <Typography>
-                                Abstract:
-                            </Typography>
-                            <Typography
-                                variant="body2" 
-                            >
-                                {props.publication.abstract}
-                            </Typography>
-                        </Box>
-                    </DialogContentText>
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={closePublicationPopup}>Close</Button>
-                </DialogActions>
-            </Dialog>
+            <PreviewPublication
+                isOpen={openPublication}
+                publication={props?.publication}
+                onClose={closePublicationPopup}
+            />
             <motion.div 
                 transition={{ duration: 1 }}
                 initial={{ scale: 0 }}
@@ -108,7 +50,16 @@ const CardPublication = (props) => {
                         backdropFilter: "blur(0.3rem) brightness(20%)",
                         boxShadow: 10,
                     }}  
-                >
+                >   
+                    {props?.disableImage ? <></>:
+                        <CardMedia
+                            component="img"
+                            alt="logo"
+                            height="140"
+                            width="50%"
+                            image={props?.publication?.logo}
+                        />
+                    }
                     <CardContent>
                         <Typography 
                             gutterBottom 
