@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 import { Box } from '@mui/material';
 
-const listColumns: GridColDef[] = [
+const listColumns = [
     {
       field: 'authors',
       headerName: '1st Author',
@@ -12,7 +12,7 @@ const listColumns: GridColDef[] = [
       valueGetter: (value, row) =>  `${value.split('and')[0].split(',')[0] }`,
     },
     { field: 'title', headerName: 'Title', width:500},
-    { field: 'publisherShort', headerName: 'Conference/Journal', width: 100 },
+    { field: 'publisherShort', headerName: 'Conference', hideable: false, width: 100 },
     { field: 'year', headerName: 'Year', width: 60 },
     { field: 'pages', headerName: 'Pages', width: 80 },
     { 
@@ -20,14 +20,11 @@ const listColumns: GridColDef[] = [
         headerName: 'DOI', 
         width: 250,
     },
-    // {
-    //   field: 'fullName',
-    //   headerName: 'Full name',
-    //   description: 'This column has a value getter and is not sortable.',
-    //   sortable: false,
-    //   width: 160,
-    //   valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
-    // },
+    { 
+        field: 'abstract', 
+        headerName: 'Abstract', 
+        width: 600,
+    }
   ];
 
 
@@ -50,6 +47,7 @@ const PublicationListView = (props) => {
                     pageSizeOptions={[5, 10, 15]}
                     //   checkboxSelection
                     sx={{ border: 0 }}
+                    rowHeight={50}
                 />
             </Box>
         </>
