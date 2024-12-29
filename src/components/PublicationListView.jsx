@@ -12,7 +12,7 @@ const listColumns: GridColDef[] = [
       valueGetter: (value, row) =>  `${value.split('and')[0].split(',')[0] }`,
     },
     { field: 'title', headerName: 'Title', width:500},
-    { field: 'publisherShort', headerName: 'Publisher', width: 100 },
+    { field: 'publisherShort', headerName: 'Conference/Journal', width: 100 },
     { field: 'year', headerName: 'Year', width: 60 },
     { field: 'pages', headerName: 'Pages', width: 80 },
     { 
