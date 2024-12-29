@@ -18,7 +18,7 @@ const Publications = () => {
 
   useEffect(() => {
     axios.get(PUBLICATIOSN_URL).then((res) => {
-      setPublications(res?.data?.papers)
+      setPublications(res?.data?.papers.reverse())
     });
   }, []);
 
@@ -30,7 +30,7 @@ const Publications = () => {
         <Tabs
           value={activeType}
           onChange={(event, newValue) => {setActiveType(newValue)}}
-          centered
+          // centered
           aria-label="scrollable publication filter"
           variant="scrollable"
           allowScrollButtonsMobile
