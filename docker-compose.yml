@@ -6,7 +6,7 @@ services:
     image: wireai-frontend-image
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     ports:
       - 3030:3000
     restart: always
