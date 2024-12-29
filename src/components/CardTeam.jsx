@@ -42,6 +42,10 @@ const CardTeam = (props) => {
                 backgroundSize: "0.4rem 0.4rem",
                 backdropFilter: "blur(0.3rem) brightness(90%)",
                 boxShadow: 10,
+                margin: {
+                    xs: "2rem",
+                    sm: "0rem"
+                }
             }}  
         >
             <CardMedia
