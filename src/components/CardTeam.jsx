@@ -28,7 +28,9 @@ const CardTeam = (props) => {
         window.location.href = 'https://orcid.org/' + props.orcid
     }
 
-    const imageURL = 'https://raw.githubusercontent.com/Forest-Fire-Research/website-assets/main/assets/headshots/' + props.image + ".jpg"
+    const imageFile = props.image == null ? "Author_UNF" : props.image
+
+    const imageURL = 'https://raw.githubusercontent.com/Forest-Fire-Research/website-assets/main/assets/headshots/' + imageFile + ".jpg"
 
     return (
         <Card
