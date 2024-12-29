@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  wireai-frontend:
+    container_name: wireai-frontend
+    image: wireai-frontend-image
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 3030:3000
+    restart: always
+    entrypoint: serve -s build
