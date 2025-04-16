@@ -5,6 +5,8 @@ import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Page404 from './pages/Page404';
 import Publications from './pages/Publications/Publications';
+import WorkInReview from './pages/WorkInReview/WorkInReview';
+import WorkInProgress from './pages/WorkInProgress/WorkInProgress';
 import { Box, createTheme } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import Footer from './components/Footer';
@@ -41,7 +43,9 @@ function App() {
             <Route path="*" element={<Page404 />} />
             <Route exact path="/" element={<Home />} />
             <Route exact path="/about" element={<About /> } />
-            <Route exact path="/Publications" element={<Publications />} />
+            <Route exact path="/publications" element={<Publications />} />
+            <Route exact path="/work-in-review" element={<WorkInReview />} />
+            <Route exact path="/work-in-progress" element={<WorkInProgress />} />
           </Routes>
         </Box>
       </BrowserRouter>
