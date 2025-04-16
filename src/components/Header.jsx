@@ -25,7 +25,7 @@ const Header = () => {
   const navigationStates = {
     "Publications" : "/publications",
     "Work in Review": "/work-in-review",
-    "Work in Progress": "/work-in-progress",
+    // "Work in Progress": "/work-in-progress",
     "About": "/about",
   }
 
