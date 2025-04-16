@@ -22,6 +22,13 @@ const Header = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
+  const navigationStates = {
+    "Publications" : "/publications",
+    "Work in Review": "/work-in-review",
+    "Work in Progress": "/work-in-progress",
+    "About": "/about",
+  }
+
   return (
     <div 
       style={{
@@ -72,18 +79,15 @@ const Header = () => {
           /> 
           <LogoComponent width={50} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            <Button 
-              color="inherit"
-              onClick={() => navigate('/publications')}
-            >
-                Publications
-            </Button>
-            <Button 
-              color="inherit"
-              onClick={() => navigate('/about')}
-            >
-                About
-            </Button>
+            {
+              Object.keys(navigationStates)?.map(action => 
+                <Button 
+                  color="inherit"
+                  onClick={() => navigate(navigationStates[action])}
+                >
+                    {action}
+                </Button>
+            )}
           </Box>
           <Box sx={{ display: { xs: 'block', sm: 'none' } }}>
             <Drawer 
@@ -105,30 +109,23 @@ const Header = () => {
                 onClick={handleDrawerToggle}
               >
                 <List>
-                  <ListItem>
-                    <Button 
-                      color="inherit"
-                      onClick={() => navigate('/publications')}
-                      style={{
-                        color:"white",
-                      }}
-                    >
-                        Publications
-                    </Button>
-                  </ListItem>
-                  <Divider sx={{ bgcolor: "primary.dark" }}/>
-                  <ListItem>
-                    <Button 
-                      color="inherit"
-                      onClick={() => navigate('/about')}
-                      style={{
-                        color:"white",
-                      }}
-                    >
-                        About
-                    </Button>
-                  </ListItem>
-                  <Divider sx={{ bgcolor: "primary.dark" }}/>
+                  {
+                    Object.keys(navigationStates)?.map(action => 
+                      <>
+                        <ListItem>
+                          <Button 
+                            color="inherit"
+                            onClick={() => navigate(navigationStates[action])}
+                            style={{
+                              color:"white",
+                            }}
+                            >
+                              {action}
+                          </Button>
+                        </ListItem>
+                        <Divider sx={{ bgcolor: "primary.dark" }}/>
+                      </>
+                  )}
                 </List>
               </Box>
             </Drawer>
